@@ -311,15 +311,19 @@ export const ReactPageScroller = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // 初始化3，第一次渲染时进入两次：addNextComponent 插入部分组件
   useEffect(() => {
     isScrolling = false;
     previousTouchMove = null;
+    console.log('3333',);
     if (componentIndex > prevComponentIndex) {
       addNextComponent();
     }
   }, [addNextComponent, componentIndex, prevComponentIndex]);
 
+  // 初始化4，首次渲染进入一次：触发pageOnChange事件
   useEffect(() => {
+    console.log('44',);
     if (pageOnChange) {
       pageOnChange(componentIndex);
     }
