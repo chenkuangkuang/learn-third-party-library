@@ -1,0 +1,19 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.outer{
+  width: 500px;
+  height: 500px;
+  border: 1px solid #000;
+}
+
+.inner{
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  cursor: move;
+}
