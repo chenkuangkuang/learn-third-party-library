@@ -6,6 +6,7 @@ const FullPage = () => {
   const [isDropping, setIsDropping] = useState(false);
   const [offset, setOffset] = useState({ left: 0, top: 0 });
   const [pos, setPos] = useState({ left: 0, top: 0 });
+  const [bgPos, setBgPos] = useState({ left: '0', top: "0" });
   const boxRef = useRef(null);
 
   const start = (e) => {
@@ -35,9 +36,13 @@ const FullPage = () => {
       if (targetPos.top <= 0) {
         targetPos.top = 0;
       }
-      console.log('move=e=', e, offset);
+      console.log('move=e=', targetPos);
       // e.clientX 需要减去 鼠标按下时相对方块左上角的偏移量
-      setPos(targetPos)
+      setPos(targetPos);
+      setBgPos({
+        left: -targetPos.left,
+        top: -targetPos.top
+      })
     }
   }
   const end = (e) => {
@@ -59,7 +64,7 @@ const FullPage = () => {
 
   return (
     <div className={"outer"}>
-      <div className="inner" ref={re => boxRef.current = re} style={{ position: 'absolute', left: pos.left, top: pos.top }} onMouseDown={start} ></div>
+      <div className="inner" ref={re => boxRef.current = re} style={{ position: 'absolute', left: pos.left, top: pos.top, backgroundPosition: `${bgPos.left}px ${bgPos.top}px` }} onMouseDown={start} ></div>
     </div>
   );
 }
