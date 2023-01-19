@@ -1,8 +1,0 @@
-.github
-demo
-src
-.travis.yml
-.prettierrc
-.eslintrc
-nwb.config.js
-CONTRIBUTING.md

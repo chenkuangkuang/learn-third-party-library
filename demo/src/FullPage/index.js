@@ -1,7 +1,7 @@
 import React from "react";
 import { Pager } from "react-bootstrap";
 
-import ReactPageScroller, { SectionContainer } from "../../src";
+import ReactPageScroller, { SectionContainer } from "../../../src";
 import FirstComponent from "./FirstComponent";
 import SecondComponent from "./SecondComponent";
 import ThirdComponent from "./ThirdComponent";
@@ -44,14 +44,15 @@ export default class FullPage extends React.Component {
     return (
       <React.Fragment>
         <ReactPageScroller
-          pageOnChange={this.handlePageChange}
-          onBeforePageScroll={this.handleBeforePageChange}
-          customPageNumber={this.state.currentPage}
+          // pageOnChange={this.handlePageChange}
+          // onBeforePageScroll={this.handleBeforePageChange}
+          // customPageNumber={this.state.currentPage}
         >
           <FirstComponent />
-          <SectionContainer height={50}>
+          <SecondComponent />
+          {/* <SectionContainer height={50}>
             <SecondComponent />
-          </SectionContainer>
+          </SectionContainer> */}
           <ThirdComponent />
           <FourthComponent />
           <FifthComponent />
