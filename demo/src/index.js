@@ -6,6 +6,7 @@ import "./index.css";
 import FullPage from "./FullPage/index";
 import Cropper from "./Cropper/index";
 import Routerr from "./Routerr/index";
+import Redux from "./Redux/index";
 
 import "./index.css";
 
@@ -24,6 +25,9 @@ class Demo extends React.Component {
           <div className="link">
             <Link to="/router">React router demo</Link>
           </div>
+          <div className="link">
+            <Link to="/redux">React redux demo</Link>
+          </div>
         </div>
       </div>
     );
@@ -38,6 +42,7 @@ ReactDOM.render(
         <Route path="/fullpage" component={FullPage} />
         <Route path="/cropper" component={Cropper} />
         <Route path="/router" component={Routerr} />
+        <Route path="/redux" component={Redux} />
       </Switch>
     </div>
   </Router>,
