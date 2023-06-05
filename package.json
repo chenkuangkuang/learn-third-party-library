@@ -21,14 +21,15 @@
     "test:watch": "nwb test-react --server"
   },
   "dependencies": {
+    "@egjs/react-infinitegrid": "^4.10.0",
     "babel-polyfill": "^6.26.0"
   },
   "peerDependencies": {
     "babel-polyfill": "^6.26.0",
+    "prop-types": "^15.6.2",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "react-router-dom": "^4.3.1",
-    "prop-types": "^15.6.2"
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.6.0",
