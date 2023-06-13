@@ -29,12 +29,12 @@ let emojiList = [], index = 1;
 
 Object.keys(allEmoji).map((i, categoryIndex) => {
   var arr = allEmoji[i].map(j => ({ ...j, category: i, groupKey: categoryIndex, index: index++ }));
-  // console.log(arr);
+  console.log(arr);
   emojiList = emojiList.concat(arr);
   return arr;
 })
 
-function getItems(nextGroupKey, count) {
+function getItems(nextGroupKey, count, category) {
   const nextItems = [];
   const nextKey = nextGroupKey * count;
 
@@ -42,7 +42,7 @@ function getItems(nextGroupKey, count) {
     nextItems.push({
       groupKey: nextGroupKey,
       key: nextKey + i,
-      j: emojiList[nextKey + i]
+      j: category ? emojiList.filter(x=>x.category == category)[nextKey + i] : emojiList[nextKey + i]
     });
   }
   console.log('nextItems=0', nextItems);
@@ -89,7 +89,7 @@ const Item = ({ j }) => {
 
 const Index = () => {
 
-  const [activeCategory, setActiveCategory] = React.useState();
+  const [activeCategory, setActiveCategory] = React.useState(Categories[0]);
 
   const domRef = React.useRef(null);
   const containerRef = React.useRef(null);
@@ -103,12 +103,12 @@ const Index = () => {
 
     // return;
     // console.log('category: ' + category);
-    const newItems = setCategoryItems(category);
+    // const newItems = setCategoryItems(category);
     // console.log('newItems=', newItems);
-    // setItems(newItems);
+    setItems(getItems(0, 80, category));
     setActiveCategory(category);
     setTimeout(() => {
-      domRef.current.setCursors(1, 2, false);
+      domRef.current.setCursors(5, 6);
       domRef.current.renderItems();
     //   var firstMatch = emojiList.find((i, index) => i.category === category);
     //   const targetHeight = firstMatch.index / 8 * 40;
@@ -153,7 +153,7 @@ const Index = () => {
           const lastGroupKey = (+e.groupKey || 0) - 1;
           setItems([
             ...items,
-            ...getItems(lastGroupKey, 80),
+            ...getItems(lastGroupKey, 80, activeCategory),
           ]);
         }}
         onRequestAppend={(e) => {
@@ -161,7 +161,7 @@ const Index = () => {
           const nextGroupKey = (+e.groupKey || 0) + 1;
           setItems([
             ...items,
-            ...getItems(nextGroupKey, 80),
+            ...getItems(nextGroupKey, 80, activeCategory),
           ]);
         }}
       >
